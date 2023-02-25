@@ -4,6 +4,11 @@
 
 int search(int numbers[], int low, int high, int value) 
 {
+	if( low > high )
+	{
+		return -1;
+	}
+
 	int mid = (low+high)/2;
 
 	if( numbers[mid] == value )
@@ -11,26 +16,16 @@ int search(int numbers[], int low, int high, int value)
 		return mid;
 	}
 
-	if( numbers[high] == value )
-	{
-		return high;
-	}
-
-	if( numbers[low] == value )
-	{
-		return low;
-	}
-
 	else if( numbers[mid] < value )
 	{
-		low = mid + 1;
-		search( numbers, low, high, value );
+		//low = mid + 1;
+		return search( numbers, mid+1, high, value );
 	}
 
 	else if( numbers[mid] > value )
 	{
-		high = mid - 1;
-		search( numbers, low, high, value );
+		//high = mid - 1;
+		return search( numbers, low, mid-1, value );
 	}
 
 	else
@@ -38,7 +33,7 @@ int search(int numbers[], int low, int high, int value)
 		return -1;
 	}
 
-	//search( numbers, low, high, value );
+	//return search( numbers, low, high, value );
 
 
 	//return -1;
